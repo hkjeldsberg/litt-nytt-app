@@ -41,3 +41,5 @@ next-env.d.ts
 
 .idea/
 node_modules
+pnpm-lock.yaml
+package-lock.json
