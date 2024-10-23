@@ -17,6 +17,15 @@ export type Summaries = {
 export default function Home() {
     const summaries = useSummaries()
 
+    const bulletPointList = (summary: string) => {
+        const lines = summary.match(/[^.!?]+[.!?]+/g);
+        return (
+            <ul className={styles.bulletpoints}>
+                {lines && lines.map((line, i) => <li key={`${i}`}>{line}</li>)}
+            </ul>
+        )
+    }
+
     return (
         <div className={styles.page}>
             <main className={styles.main}>
@@ -24,21 +33,22 @@ export default function Home() {
                 <h3>Nyheter, kort fortalt</h3>
                 <ul className={styles.list}>
                     {summaries && summaries.summaries?.length != 0 &&
-                        summaries.summaries.map(summary =>
-                            (
-                                <a
-                                    href={summary.url}
-                                    target="_blank"
-                                    rel="noopener noreferrer"
-                                    key={summary.title}
-                                >
-                                    <li className={styles.listitem} key={summary.title}>
-                                        <h1>{summary.title}</h1>
-                                        <p>{summary.summary}</p>
-                                    </li>
-                                </a>
-                            )
-                        )}
+                        summaries.summaries.map(((summary, i) =>
+                                (
+                                    <a
+                                        href={summary.url}
+                                        target="_blank"
+                                        rel="noopener noreferrer"
+                                        key={`${i}`}
+                                    >
+                                        <li className={styles.listitem} key={summary.title}>
+                                            <h1>{summary.title}</h1>
+                                            {bulletPointList(summary.summary)}
+                                        </li>
+                                    </a>
+                                )
+                        ))
+                    }
                 </ul>
             </main>
             <footer className={styles.footer}>

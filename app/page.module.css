@@ -194,3 +194,12 @@ a.secondary {
 .listitem h1 {
     font-size: large;
 }
+
+.bulletpoints {
+    padding: 16px;
+}
+
+.bulletpoints li {
+    display: list-item;
+    list-style-type: disc;
+}
