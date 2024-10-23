@@ -12,7 +12,7 @@
     justify-items: center;
     min-height: 100svh;
     padding: 80px;
-    gap: 64px;
+    gap: 8px;
     font-family: var(--font-geist-sans);
 }
 
@@ -30,8 +30,9 @@
 .main {
     display: flex;
     flex-direction: column;
-    gap: 32px;
+    gap: 8px;
     grid-row-start: 2;
+    align-items: center;
 }
 
 .main ol {
@@ -171,4 +172,25 @@ a.secondary {
     .logo {
         filter: invert();
     }
+}
+
+.list {
+    list-style-type: none;
+    border-radius: 5px;
+    width: 480px;
+    display: flex;
+    flex-direction: column;
+}
+
+.listitem {
+    box-shadow: 2px 2px 6px grey;
+    background-color: white;
+    border: 2px solid black;
+    border-radius: 16px;
+    padding: 16px;
+    margin: 32px 0;
+}
+
+.listitem h1 {
+    font-size: large;
 }
