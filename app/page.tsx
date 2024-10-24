@@ -2,20 +2,11 @@
 import Image from "next/image";
 import styles from "./page.module.css";
 import {useSummaries} from "@/hooks/useSummaries";
+import {Summaries} from "@/types/summaries";
 
-export type Summary = {
-    title: string;
-    summary: string;
-    url: string;
-    date: string;
-}
-
-export type Summaries = {
-    summaries: Summary[]
-}
 
 export default function Home() {
-    const summaries = useSummaries()
+    const summaries: Summaries = useSummaries()
 
     const bulletPointList = (summary: string) => {
         const lines = summary.match(/[^.!?]+[.!?]+/g);
@@ -33,13 +24,13 @@ export default function Home() {
                 <h3>Nyheter, kort fortalt</h3>
                 <ul className={styles.list}>
                     {summaries && summaries.summaries?.length != 0 &&
-                        summaries.summaries.map(((summary, i) =>
+                        summaries.summaries.map((summary =>
                                 (
                                     <a
                                         href={summary.url}
                                         target="_blank"
                                         rel="noopener noreferrer"
-                                        key={`${i}`}
+                                        key={summary.id}
                                     >
                                         <li className={styles.listitem} key={summary.title}>
                                             <h1>{summary.title}</h1>
