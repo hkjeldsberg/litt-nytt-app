@@ -1,15 +1,14 @@
 'use client'
 import {useEffect, useState} from "react";
-import {Summaries} from "@/app/page";
+import {Summary} from "@/types/summaries";
 
 export const useSummaries = () => {
-    const [summaries, setSummaries] = useState<Summaries>()
+    const [summaries, setSummaries] = useState<Summary[]>([])
 
     useEffect(() => {
-        fetch('/api/summarize')
+        fetch('/api/summary/summaries')
             .then((res) => res.json())
             .then((data) => {
-                console.log(data)
                 setSummaries(data)
             })
     }, [])
